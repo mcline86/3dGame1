@@ -6,14 +6,18 @@ extends Spatial
 
 var keyLock = false
 var lockTime = 0
+ 
 
 export(NodePath) var menu_popup
 
 
 func _ready():
 	set_process(true)
-	set_process_input(true)
+	set_process_input(true)	
 	get_node(menu_popup).hide()
+	var hPos = (self.get_viewport().size.x / 2) - (get_node(menu_popup).rect_size.x / 2)
+	var vPos = (self.get_viewport().size.y / 2) - (get_node(menu_popup).rect_size.y / 2) 
+	get_node(menu_popup).rect_position = Vector2(hPos, vPos)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 
