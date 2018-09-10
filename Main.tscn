@@ -1,0 +1,263 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cube.tscn" type="PackedScene" id=3]
+[ext_resource path="res://cam_control.gd" type="Script" id=4]
+
+[node name="Main" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+menu_popup = NodePath("VBoxContainer")
+
+[node name="Floor" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube" parent="Floor" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, 4.61291 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube2" parent="Floor" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, 4.61291 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube3" parent="Floor" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, -4.73996 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube4" parent="Floor" index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.73773, 0.404642, -0.0124125 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube5" parent="Floor" index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 4.68912, 0.404642, -0.0750513 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube6" parent="Floor" index="6" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0199046, 0.404642, -0.0750513 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Floor2" parent="." index="1" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506115, 0, -9.98796 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube" parent="Floor2" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, 4.61291 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube2" parent="Floor2" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, 4.61291 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube3" parent="Floor2" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.404642, -4.73996 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube4" parent="Floor2" index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.73773, 0.404642, -0.0124125 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube5" parent="Floor2" index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 4.68912, 0.404642, -0.0750513 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube6" parent="Floor2" index="6" instance=ExtResource( 3 )]
+
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0199046, 0.404642, -0.0750513 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.59892, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 3.0
+light_indirect_energy = 16.0
+light_negative = false
+light_specular = 0.62
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 10.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Editor", "Light", "Omni", "Shadow" ]
+
+[node name="cam_control" type="Spatial" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.327899 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+cam_control = NodePath("shoulder")
+cam_arm = NodePath("shoulder/arm")
+
+[node name="shoulder" type="Spatial" parent="cam_control" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.960503, -0.278271, 0, 0.278271, 0.960503, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="arm" type="Spatial" parent="cam_control/shoulder" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49015, -0.142002 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" type="Camera" parent="cam_control/shoulder/arm" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.377522, 0.926001, 0, -0.926001, 0.377522, 0, 0, -1.19209e-007 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="4"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 713.0
+margin_top = 392.0
+margin_right = 888.0
+margin_bottom = 508.0
+rect_scale = Vector2( 1.25, 1.25 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 175.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Pause Menu"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="resume" type="Button" parent="VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 175.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+flat = false
+align = 1
+
+[node name="reset" type="Button" parent="VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 42.0
+margin_right = 175.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Reset"
+flat = false
+align = 1
+
+[node name="exit" type="Button" parent="VBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 66.0
+margin_right = 175.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Exit"
+flat = false
+align = 1
+
+[connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/reset" to="." method="_on_reset_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
+
+
