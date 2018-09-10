@@ -86,17 +86,23 @@ func _input(ev):
 		if ev.button_index == BUTTON_WHEEL_UP:
 			zoom = Vector3(0, -5, 0)
 			
-	var camera = get_node(cam)
-	var from = camera.project_ray_origin(ev.position)
-	var to = from + camera.project_ray_normal(ev.position) * ray_length
-	var space_state = get_world().get_direct_space_state()
-	var hit = space_state.intersect_ray(from, to)
+	
 		
 	if ev is InputEventMouseMotion:
+		var camera = get_node(cam)
+		var from = camera.project_ray_origin(ev.position)
+		var to = from + camera.project_ray_normal(ev.position) * ray_length
+		var space_state = get_world().get_direct_space_state()
+		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
 			var global = get_node(cam_eye).get_global_transform()
 			get_node(cam_eye).set_global_transform(Transform(get_node(cam_eye).get_global_transform().basis, hit.position))
 	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT and ev.pressed:
+		var camera = get_node(cam)
+		var from = camera.project_ray_origin(ev.position)
+		var to = from + camera.project_ray_normal(ev.position) * ray_length
+		var space_state = get_world().get_direct_space_state()
+		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
 			end = get_parent().get_node("Nav").get_closest_point_to_segment(from, to)
 			begin = get_parent().get_node("Nav").get_closest_point(get_node("Builder").get_translation())
