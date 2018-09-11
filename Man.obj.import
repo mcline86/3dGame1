@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Man.obj-86b25f7f490348840aa6ae0127f7ba6c.mesh"
+
+[deps]
+
+files=[ "res://.import/Man.obj-86b25f7f490348840aa6ae0127f7ba6c.mesh" ]
+
+source_file="res://Man.obj"
+dest_files=[ "res://.import/Man.obj-86b25f7f490348840aa6ae0127f7ba6c.mesh", "res://.import/Man.obj-86b25f7f490348840aa6ae0127f7ba6c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

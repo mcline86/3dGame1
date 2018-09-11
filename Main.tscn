@@ -1,71 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://cam_control.gd" type="Script" id=2]
-[ext_resource path="res://Builder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actor.gd" type="Script" id=2]
+[ext_resource path="res://Man.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Camera.gd" type="Script" id=4]
 
-[sub_resource type="CylinderMesh" id=1]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-top_radius = 1.0
-bottom_radius = 1.0
-height = 2.0
-radial_segments = 64
-rings = 4
-
-[sub_resource type="SpatialMaterial" id=2]
-
-render_priority = 0
-flags_transparent = true
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 0, 0, 0.502784 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo", "Flags" ]
-
-[sub_resource type="NavigationMesh" id=5]
+[sub_resource type="NavigationMesh" id=3]
 
 vertices = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
 polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 1, 3, 2 ) ]
@@ -87,68 +27,20 @@ filter/low_hanging_obstacles = false
 filter/ledge_spans = false
 filter/filter_walkable_low_height_spans = false
 
-[sub_resource type="PlaneShape" id=6]
+[sub_resource type="BoxShape" id=9]
 
-plane = Plane( 0, 1, 0, 0 )
+extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="PlaneMesh" id=7]
+[sub_resource type="PlaneMesh" id=5]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SphereShape" id=7]
 
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 0.421875, 0.421875, 0.421875, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.11
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo", "Roughness" ]
+radius = 1.0
 
 [node name="Main" type="Spatial" index="0"]
 
@@ -179,44 +71,7 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Editor", "Light", "Omni", "Shadow" ]
 
-[node name="cam_control" type="Spatial" parent="." index="1"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.15339 )
-script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-cam_control = NodePath("shoulder")
-cam_arm = NodePath("shoulder/arm")
-cam = NodePath("shoulder/arm/Camera")
-cam_eye = NodePath("../circle")
-
-[node name="shoulder" type="Spatial" parent="cam_control" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 0.662424, -0.749129, 0, 0.749129, 0.662424, 0, 0, 0 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="arm" type="Spatial" parent="cam_control/shoulder" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00035, 0.278015 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Camera" type="Camera" parent="cam_control/shoulder/arm" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 0.377522, 0.926001, 0, -0.926001, 0.377522, 0, 0, -1.19209e-007 )
-keep_aspect = 1
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler_tracking = 0
-projection = 0
-current = false
-fov = 70.0
-size = 1.0
-near = 0.05
-far = 100.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
 
 editor/display_folded = true
 visible = false
@@ -330,36 +185,14 @@ text = "Exit"
 flat = false
 align = 1
 
-[node name="Builder" parent="." index="3" instance=ExtResource( 3 )]
-
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.359828, 2.17997 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="circle" type="MeshInstance" parent="." index="4"]
-
-transform = Transform( 0.25, 0, 0, 0, 0.02, 0, 0, 0, 0.25, 0, 0.3, 3.51505 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
-skeleton = NodePath("..")
-material/0 = SubResource( 2 )
-_sections_unfolded = [ "Transform", "material" ]
-
-[node name="Map" type="Navigation" parent="." index="5"]
+[node name="Map" type="Navigation" parent="." index="2"]
 
 up_vector = Vector3( 0, 1, 0 )
 
 [node name="Nav" type="NavigationMeshInstance" parent="Map" index="0"]
 
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-navmesh = SubResource( 5 )
+navmesh = SubResource( 3 )
 enabled = true
 _sections_unfolded = [ "Transform" ]
 
@@ -376,8 +209,8 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody" index="0"]
 
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
-shape = SubResource( 6 )
+transform = Transform( 25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
+shape = SubResource( 9 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -393,10 +226,71 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
-material/0 = SubResource( 8 )
+material/0 = null
 _sections_unfolded = [ "Transform", "material" ]
+
+[node name="Actor" type="KinematicBody" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58296, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Actor" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.34594, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 3 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Actor" index="1"]
+
+shape = SubResource( 7 )
+disabled = false
+
+[node name="cam_rig" type="Spatial" parent="Actor" index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59384, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" type="Camera" parent="Actor/cam_rig" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.896608, 0.442826, 0, -0.442826, 0.896608, 0, 4.83494, 4.99909 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+script = ExtResource( 4 )
+distance = 4.0
+height = 2.0
 
 [connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
 
