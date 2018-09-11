@@ -4,6 +4,7 @@ extends KinematicBody
 var gravity = -9.8
 var velocity = Vector3()
 var camera
+var rig
 
 var cap_mouse = false
 
@@ -27,6 +28,9 @@ func _ready():
 func _physics_process(delta):
 	var dir = Vector3()
 	camera = get_node("cam_rig/Camera").get_global_transform()
+	rig = get_node("cam_rig").get_global_transform()
+	
+	
 	
 	if Input.is_action_pressed("move_FW"):
 		dir += -camera.basis[2]

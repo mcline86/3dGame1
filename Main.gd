@@ -18,7 +18,7 @@ func _ready():
 	var hPos = (self.get_viewport().size.x / 2) - (get_node(menu_popup).rect_size.x / 2)
 	var vPos = (self.get_viewport().size.y / 2) - (get_node(menu_popup).rect_size.y / 2) 
 	get_node(menu_popup).rect_position = Vector2(hPos, vPos)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 
 func _process(delta):

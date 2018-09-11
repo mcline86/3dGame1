@@ -5,7 +5,7 @@
 [ext_resource path="res://Man.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
 
-[sub_resource type="NavigationMesh" id=3]
+[sub_resource type="NavigationMesh" id=1]
 
 vertices = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
 polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 1, 3, 2 ) ]
@@ -27,18 +27,18 @@ filter/low_hanging_obstacles = false
 filter/ledge_spans = false
 filter/filter_walkable_low_height_spans = false
 
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="BoxShape" id=2]
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="PlaneMesh" id=5]
+[sub_resource type="PlaneMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[sub_resource type="SphereShape" id=7]
+[sub_resource type="SphereShape" id=4]
 
 radius = 1.0
 
@@ -192,7 +192,7 @@ up_vector = Vector3( 0, 1, 0 )
 [node name="Nav" type="NavigationMeshInstance" parent="Map" index="0"]
 
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-navmesh = SubResource( 3 )
+navmesh = SubResource( 1 )
 enabled = true
 _sections_unfolded = [ "Transform" ]
 
@@ -210,7 +210,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody" index="0"]
 
 transform = Transform( 25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -226,7 +226,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "material" ]
@@ -249,7 +249,7 @@ script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Actor" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.34594, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48672, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -265,13 +265,13 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Actor" index="1"]
 
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 disabled = false
 
 [node name="cam_rig" type="Spatial" parent="Actor" index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59384, 0 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0.266412, 0 )
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="Camera" type="Camera" parent="Actor/cam_rig" index="0"]
 
@@ -289,7 +289,7 @@ size = 1.0
 near = 0.05
 far = 100.0
 script = ExtResource( 4 )
-distance = 4.0
+distance = 5.0
 height = 2.0
 
 [connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
